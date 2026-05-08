@@ -31,8 +31,8 @@ jobs:
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 889749951196.dkr.eceu-central-1.amazonaws.com
+            aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 889749951196.dkr.ecr.eu-central-1.amazonaws.com
             docker pull 889749951196.dkr.ecr.eu-central-1.amazonaws.com/fastapi-app:latest
             docker stop fastapi-app || true
             docker rm fastapi-app || true
-            docker run -d --name fastapi-app -p 80:8000 --env-file /home/ec2-user/example-fastapi/.env 889749951196.dkr.ecr.eu-central-1.amazonaws.cofastapi-app:latest
+            docker run -d --name fastapi-app -p 80:8000 --env-file /home/ec2-user/example-fastapi/.env 889749951196.dkr.ecr.eu-central-1.amazonaws.com/fastapi-app:latest
