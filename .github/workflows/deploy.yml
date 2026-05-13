@@ -11,6 +11,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Run tests
+        run: |
+          pip install -r requirements.txt
+          pytest tests/ -v
+
       - name: Login to ECR
         uses: aws-actions/amazon-ecr-login@v2
         id: login-ecr
