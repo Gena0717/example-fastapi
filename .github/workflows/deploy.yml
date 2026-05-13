@@ -12,6 +12,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run tests
+        env:
+          DATABASE_URL: sqlite://
+          SECRET_KEY: test-secret-key
+          ALGORITHM: HS256
+          ACCESS_TOKEN_EXPIRE_MINUTES: 60
         run: |
           pip install -r requirements.txt
           pytest tests/ -v
